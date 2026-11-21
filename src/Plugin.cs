@@ -67,7 +67,7 @@ public sealed partial class Plugin : IDalamudPlugin
         Pi.UiBuilder.Draw += DrawUi;
         Pi.UiBuilder.OpenMainUi += OpenUi;
         Pi.UiBuilder.OpenConfigUi += OpenUi;
-        Print($"v0.2.6: {(config.Enabled ? "自動移動有効" : "観測のみ")}。/dsrmeteor で設定画面。最初の塔まではPTの担当位置へ移動してください。");
+        Print($"v0.2.7: {(config.Enabled ? "自動移動有効" : "観測のみ")}。/dsrmeteor で設定画面。最初の塔まではPTの担当位置へ移動してください。");
     }
     private static void Print(string message) => Chat.Print("[DSRMeteorPilot] " + message);
     private void OnCommand(string command, string args)
@@ -91,10 +91,10 @@ public sealed partial class Plugin : IDalamudPlugin
                 case "stop": manualStop = true; encounter.Abort("手動停止・このプルでは再開しません"); StopMovement(); RestoreTolerance(); Print(encounter.Status); break;
                 case "kb":
                     if (p.Length != 2 || p[1] is not ("on" or "off")) throw new InvalidOperationException("kb on|off");
-                    config.AutoAntiKnockback = p[1] == "on"; Print("自動ノックバック無効化: " + config.AutoAntiKnockback); break;
+                    config.AutoAntiKnockback = p[1] == "on"; Print("ノックバック対策: " + (config.AutoAntiKnockback ? "オン" : "オフ")); break;
                 case "record":
                     if (p.Length != 2 || p[1] is not ("on" or "off")) throw new InvalidOperationException("record on|off");
-                    config.RecordTelemetry = p[1] == "on"; Print("診断記録: " + config.RecordTelemetry); break;
+                    config.RecordTelemetry = p[1] == "on"; Print("診断ログ: " + (config.RecordTelemetry ? "保存する" : "保存しない")); break;
                 case "status": Print($"{encounter.Status} / 自動={config.Enabled}, 着弾={encounter.ConfirmedHits}/7, 実測間隔={encounter.LastInterval:F3}s, 受信={events != null}"); break;
                 default: Print("on: 有効化 / off: 観測のみ / stop: このプルの移動を中断 / status / kb on|off / record on|off"); break;
             }

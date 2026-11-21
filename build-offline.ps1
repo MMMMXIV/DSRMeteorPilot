@@ -11,7 +11,7 @@ $trees = [System.Collections.Generic.List[Microsoft.CodeAnalysis.SyntaxTree]]::n
 Get-ChildItem "$PSScriptRoot/src/*.cs" | ForEach-Object {
     $trees.Add([Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree]::ParseText([IO.File]::ReadAllText($_.FullName), $parse, $_.Name))
 }
-$trees.Add([Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree]::ParseText('[assembly: System.Reflection.AssemblyVersion("0.2.6.0")] [assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v10.0")]', $parse))
+$trees.Add([Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree]::ParseText('[assembly: System.Reflection.AssemblyVersion("0.2.7.0")] [assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v10.0")]', $parse))
 $refs = [System.Collections.Generic.List[Microsoft.CodeAnalysis.MetadataReference]]::new()
 Get-ChildItem "$PSHOME/ref/*.dll" | ForEach-Object { $refs.Add([Microsoft.CodeAnalysis.MetadataReference]::CreateFromFile($_.FullName)) }
 foreach ($name in @('Dalamud', 'Dalamud.Bindings.ImGui', 'HexaGen.Runtime', 'Lumina', 'Lumina.Excel', 'FFXIVClientStructs', 'InteropGenerator.Runtime')) {
@@ -29,6 +29,8 @@ try {
     [IO.File]::WriteAllBytes((Join-Path $OutputDirectory 'DSRMeteorPilot.dll'), $stream.ToArray())
 } finally { $stream.Dispose() }
 Copy-Item "$PSScriptRoot/DSRMeteorPilot.json" $OutputDirectory
+New-Item -ItemType Directory -Force "$OutputDirectory/images" | Out-Null
+Copy-Item "$PSScriptRoot/images/icon.png" "$OutputDirectory/images/icon.png"
 Write-Output "Build succeeded: $OutputDirectory"
 
 

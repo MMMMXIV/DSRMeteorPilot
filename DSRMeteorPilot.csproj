@@ -1,15 +1,18 @@
 <Project Sdk="Dalamud.NET.Sdk/15.0.0">
   <PropertyGroup>
-    <Version>0.2.6.0</Version>
+    <Version>0.2.7.0</Version>
     <AssemblyName>DSRMeteorPilot</AssemblyName>
     <RootNamespace>DSRMeteorPilot</RootNamespace>
     <Author>MMMMXIV</Author>
-    <Name>DSR Meteor Pilot (Validation)</Name>
+    <Name>DSR Meteor Pilot</Name>
     <Punchline>Event-driven DSR P2 meteor controller</Punchline>
-    <Description>Prey, tower and action-effect detection with vnavmesh movement. Live validation pending; see README.</Description>
-    <Tags>dsr;meteor;prototype</Tags>
+    <Description>絶竜詩P2のメテオ経路をイベントに合わせて制御します。自動移動にはvnavmeshが必要です。</Description>
+    <Tags>dsr;meteor;movement</Tags>
   </PropertyGroup>
-  <ItemGroup><Compile Remove="tests/**/*.cs" /></ItemGroup>
+  <ItemGroup>
+    <Compile Remove="tests/**/*.cs" />
+    <None Update="images/icon.png" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>
 
 

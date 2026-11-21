@@ -24,7 +24,7 @@ public sealed class Route
         const float radius = 19.5f;
         var partnerRadius = Distance(partner, Center);
         if (startRadius < 17 || startRadius > 20.5f || partnerRadius < 17 || partnerRadius > 20.5f)
-            throw new InvalidOperationException("開始位置が検証対象の外周範囲外です");
+            throw new InvalidOperationException("開始位置が対応する外周範囲から外れています");
         if (MathF.Abs(start.Z - 100) < 13 || MathF.Abs(partner.Z - 100) < 13 || (start.Z < 100) == (partner.Z < 100))
             throw new InvalidOperationException("南北に分かれたメテオ配置ではありません");
         var angle = Angle(start);

@@ -155,7 +155,7 @@ public sealed class Encounter
         }
         if (actualMeteors.Any(p => Route.Distance(p, e.Position) < 5.1f)) { Abort("自分のメテオ間隔が不足"); return; }
         var interval = e.Time - lastHitAt;
-        if (interval < 1.0 || interval > 1.9) { Abort("着弾間隔が検証範囲外"); return; }
+        if (interval < 1.0 || interval > 1.9) { Abort("着弾の間隔が想定と異なるため停止しました"); return; }
         LastInterval = interval; lastHitAt = e.Time; actualMeteors.Add(e.Position); ConfirmedHits++;
         Trace?.Invoke($"hit: {ConfirmedHits}, interval={interval:F3}, x={e.Position.X:F2}, z={e.Position.Z:F2}");
         if (ConfirmedHits < 7 && Route.Distance(frame.Position, Route.Drops[expectedSnapshot]) > 0.75f)
