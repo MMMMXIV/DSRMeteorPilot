@@ -67,7 +67,7 @@ public sealed partial class Plugin : IDalamudPlugin
         Pi.UiBuilder.Draw += DrawUi;
         Pi.UiBuilder.OpenMainUi += OpenUi;
         Pi.UiBuilder.OpenConfigUi += OpenUi;
-        Print($"v0.2.5: {(config.Enabled ? "自動移動有効" : "観測のみ")}。/dsrmeteor で設定画面。最初の塔まではPTの担当位置へ移動してください。");
+        Print($"v0.2.6: {(config.Enabled ? "自動移動有効" : "観測のみ")}。/dsrmeteor で設定画面。最初の塔まではPTの担当位置へ移動してください。");
     }
     private static void Print(string message) => Chat.Print("[DSRMeteorPilot] " + message);
     private void OnCommand(string command, string args)

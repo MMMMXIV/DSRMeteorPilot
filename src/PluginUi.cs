@@ -72,7 +72,7 @@ public sealed partial class Plugin
         try
         {
             if (!visible) return;
-            ImGui.TextUnformatted("DSR Meteor Pilot v0.2.5");
+            ImGui.TextUnformatted("DSR Meteor Pilot v0.2.6");
             ImGui.TextWrapped("南北・時計回り処理用。最初の担当塔への散開は手動です。実機でのギミック成功は未検証です。");
             ImGui.Separator();
             DrawDependencies();
