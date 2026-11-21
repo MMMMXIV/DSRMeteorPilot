@@ -7,7 +7,7 @@ Dalamud API 15 / .NET 10向けの検証版プラグインです。絶竜詩P2の
 Dalamud設定 `/xlsettings` → Experimental（実験的機能）→ Custom Plugin Repositories に、次のURLを追加して有効化・保存してください。
 
 ```text
-https://raw.githubusercontent.com/MMMMXIV/DSRMeteorPilot/main/repo.json
+https://raw.githubusercontent.com/MMMMXIV/DalamudPlugins/main/repo.json
 ```
 
 `/xlplugins` のインストール可能なプラグインから **DSR Meteor Pilot (Validation)** を検索してインストールします。vnavmeshは別途導入してください。
@@ -52,3 +52,6 @@ pwsh -File ./tests/run.ps1
 - `src/`: 対応するソース。
 
 更新時はアセンブリとマニフェストのバージョンを上げ、新しいバージョン名のZIPを作成して、repo.jsonのバージョン・ダウンロード先・LastUpdateを更新してください。以前のZIPを上書きしない運用を推奨します。
+
+
+共通の配布一覧は [DalamudPlugins](https://github.com/MMMMXIV/DalamudPlugins) で管理します。新しい版を公開するときは、そちらの `repo.json` も更新してください。このリポジトリの旧 `repo.json` は既存利用者向けに残しています。新規導入には共通URLを使用してください。
